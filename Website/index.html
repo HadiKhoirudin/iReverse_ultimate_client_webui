@@ -3,168 +3,94 @@
    <head>
       <title>iReverse WebUI</title>
       <meta name="viewport" content="width=device-width">
-	  <link rel="icon" type="image/x-icon" href="favicon.png">
-	  <link rel="stylesheet" href="w3.css">
-      <script src="pusher.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <style>
-         #logContainer {
-         font-family: Consolas;
-         }
-         .cyan {
-         color: #00FFFF;
-         }
-         .red {
-         color: red;
-         }
-         .green {
-         color: green;
-         }
-         .fuchsia  {
-         color: #FF00FF;
-         }
-         .chartreuse  {
-         color: #DFFF00;
-         }
-         .black {
-         color: black;
-         }
-         .blue {
-         color: blue;
-         }
-         .lime {
-         color:#00FF00;
-         }
-         .gold {
-         color:#FFD700;
-         }
-         .gold {
-         color:#FFD700;
-         }
-         .orange {
-         color:#FFA500;
-         }
-         .darkorange {
-         color:#FF8C00 ;
-         }
-      </style>
+      <link rel="icon" type="image/x-icon" href="assets/icons/favicon.png">
+      <link rel="stylesheet" href="assets/css/custom.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
    </head>
    <body>
+   
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">iReverse</a>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 
-   <center>
+<div class="container mw-100">
+  <div class="row">
+    <div class="col text-center">
       <h1>iReverse Ultimate WebUI</h1>
-   </center>
-   <p style="text-align:center;">
+    </div>
+  </div>
+  <div class="row hstack gap-12">
+    <div class="col-12">
       <marquee>Ini adalah WebUI untuk melakukan Flashing / Unlock Smartphone oleh Hadi Khoirudin, S.Kom...     </marquee>
-   </p>
-   
-   <hr>
-   <br>
-      <div id="logContainer" style="padding-left: 14px; font-size: 12pt;"></div>
-   <br>
-   <hr>
-   
-   <form action="" method="post" id="formexec" >
-   <input type="text" name="action" value="MTK_OneClick" style="display: none;">
-   
-<div class="w3-light-grey" style="padding-bottom: 3px;">
-<div id="Progressbar1" class="w3-green" style="height:24px;width:0%;"></div>
-</div>
-   
-<div class="w3-light-grey">
-<div id="Progressbar2" class="w3-green" style="height:24px;width:0%"></div>
-</div>
-<br>
-<div style="padding-left: 14px;">
-<input type="radio" id="html" name="method" value="Readinfogpt" checked> 
-<label> 
-	MTK Read Info
-</label>
-<input type="radio" id="html" name="method" value="Universalfrp">
-<label> 
-	MTK Universal FRP
-</label>
-<div>
-<br>
-   <center>
-   <button style="padding: 8px 32px"> Exec </button>
-   </center>
-   </form>
-   <br>
-   <div class="copyright" style="padding-left: 12px;">
-   <small>
-		2023 made with &#x1f49d; by 
-		<a href="https://www.youtube.com/c/hadikit?sub_confirmation=1" target="_blank">Hadi Khoirudin, S.Kom - @HadiKIT</a> for a better web.
-	</small>
-   </div>
-      <script>
-var channel_me = 'private-channel-ireverse';
-var	event_me = 'client-User-Web';
-var	event_to = 'client-ireverse-001';
-
-var app_key = '743996c65a2c3b504344';
-var pusher = new Pusher(app_key, {
-	cluster: 'ap1',
-	forceTLS: false
-});
-
-channel = pusher.subscribe(channel_me);
-channel.bind(event_me, function (data) {
-
-console.log(data);
-var logContainer = document.getElementById("logContainer");
-var Progressbar1 = document.getElementById("Progressbar1");
-var Progressbar2 = document.getElementById("Progressbar2");
-  if (data.hasOwnProperty('message'))
-  {
-	  if (data.hasOwnProperty('message') && data.message === ">clear<") {
-		 logContainer.innerHTML = ""; // Mengosongkan logContainer jika clear:true
-	  } else {
-			 var logText = data.hasOwnProperty('message') ? data.message : '';
-			 var logClass = data.hasOwnProperty('color') ? data.color : '';
-			 if (data.hasOwnProperty('newline') && data.newline) {
-				logContainer.innerHTML += '<span class="' + logClass + ' richlogs">' + logText + '</span> <br>';
-				$(".richlogs").last()[0].scrollIntoView({ behavior: 'smooth' });
-			 } else {
-				logContainer.innerHTML += '<span class="' + logClass + ' richlogs">' + logText + '</span>';
-			 }
-		 }
-	 }
-	 
-	 
-  if (data.hasOwnProperty('progressbar1'))
-  {
-	Progressbar1.style.width = data.progressbar1 + '%';
-  }
-  
-  if (data.hasOwnProperty('progressbar2'))
-  {
-	Progressbar2.style.width = data.progressbar2 + '%';
-  }
-  
-});
-      </script>
-<script>
-$('#formexec').submit(function (e) {
-	e.preventDefault();
-	var dataform = $('#formexec').serialize();
-          $.ajax({
-              url : "trigger.php",
-              type: "POST",
-              data: dataform,
-              success: function(data)
-              { 
-				console.log('Ok!');
-			  },
-              error: function (jqXHR, textStatus, errorThrown)
-              {
-				  
-                  alert("Mohon maaf! Sepertinya ada masalah dengan server!");
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Mediatek
+    </div>
+    <div class="col-10">
       
-              }
-          });
-
-});
-</script>
+      <hr>
+      <br>
+      <div id="logContainer"></div>
+      <br>
+      <hr>
+	  
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Navbar2
+    </div>
+    <div class="col-10">
+      <form action="" method="post" id="formexec" >
+         <input class="custom hidden" type="text" name="action" value="MTK_OneClick">
+		 
+		 <div class="progress bar1" role="progressbar" aria-label="Progressbar 1" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar text-bg-danger" id="Progressbar1" style="width: 100%">100%</div>
+         </div>
+		 
+		 <div class="progress" role="progressbar" aria-label="Progressbar 2" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar text-bg-danger" id="Progressbar2" style="width: 100%">100%</div>
+         </div>
+         <br>
+         <div class="custom exec">
+         <input type="radio" id="html" name="method" value="Readinfogpt" checked> 
+         <label> 
+         MTK Read Info
+         </label>
+         <input type="radio" id="html" name="method" value="Universalfrp">
+         <label> 
+         MTK Universal FRP
+         </label>
+         <div>
+         <br>
+         <center>
+            <button class="btn btn-danger exec"> Exec </button>
+         </center>
+         <br>
+         </div>
+         </div>
+      </form>
+    </div>
+  </div>
+</div>
+      
+      <div class="copyright">
+         <small>
+         2023 made with &#x1f49d; by 
+         <a href="https://www.youtube.com/@HadiK-IT?sub_confirmation=1" target="_blank">Hadi Khoirudin, S.Kom - @HadiKIT</a> for a better web.
+         </small>
+      </div>
    </body>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>   
+   <script src="assets/js/pusher.min.js"></script>
+   <script src="assets/js/main.js"></script>
 </html>

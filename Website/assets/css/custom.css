@@ -1,0 +1,61 @@
+﻿
+         body {
+         font-family: Consolas !important;
+		 font-size: 10pt !important;
+         }
+		 #logContainer {
+         font-family: Consolas;
+		 padding-left: 8px;
+		 font-size: 14px !important;
+         }
+         .cyan {
+         color: #00FFFF;
+         }
+         .red {
+         color: red;
+         }
+         .green {
+         color: green;
+         }
+         .fuchsia  {
+         color: #FF00FF;
+         }
+         .chartreuse  {
+         color: #DFFF00;
+         }
+         .black {
+         color: black;
+         }
+         .blue {
+         color: blue;
+         }
+         .lime {
+         color:#00FF00;
+         }
+         .gold {
+         color:#FFD700;
+         }
+         .gold {
+         color:#FFD700;
+         }
+         .orange {
+         color:#FFA500;
+         }
+         .darkorange {
+         color:#FF8C00 ;
+         }
+		.progress.bar1 {
+		margin-bottom: 2px;
+		}
+		.custom.exec {
+		padding-left: 14px;
+		}
+		.btn.btn-danger.exec {
+		padding: 2px 48px;
+		}
+		.custom.hidden {
+		display: none;
+		}
+		.copyright {
+		padding-left: 12px;
+		}
