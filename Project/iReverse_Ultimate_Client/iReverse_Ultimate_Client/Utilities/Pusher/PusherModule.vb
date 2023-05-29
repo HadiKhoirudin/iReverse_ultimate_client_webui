@@ -60,7 +60,7 @@ Public Module PusherModule
 
     Public Sub CountHandler(ByVal sender As Object, ByVal data As String)
         Console.WriteLine($"CountHandler {data}")
-        RichLogs("logged-In", "blue", True)
+        RichLogs("logged-In", "blue", False, True)
     End Sub
 
     Public Sub PusherError(ByVal sender As Object, ByVal [error] As PusherException)

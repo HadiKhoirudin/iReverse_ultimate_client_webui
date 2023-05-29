@@ -39,7 +39,7 @@ Public Class XtraMain
     Public Sub XtraMainClose()
         ProcessKill()
         Dim channel As Channel = _pusher.GetChannel(mychannel)
-        RichLogs("logged-Out", "blue", True)
+        RichLogs("logged-Out", "blue", False, True)
 
         _pusher.Unbind(myEvent)
     End Sub
