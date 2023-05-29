@@ -27,7 +27,7 @@ Module WebUI
     End Sub
 
     Public Sub Progressbar1(value As Long)
-
+        Delay(0.1)
         Dim jsonData = New With {
         .progressbar1 = value
         }
@@ -36,7 +36,7 @@ Module WebUI
         channel.Trigger(XtraMain.toEvent, jsonData)
     End Sub
     Public Sub Progressbar2(value As Long)
-
+        Delay(0.1)
         Dim jsonData = New With {
         .progressbar2 = value
         }

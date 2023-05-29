@@ -24,6 +24,7 @@ Module MTK_OneClick
             .WorkerSupportsCancellation = True
         }
         AddHandler XtraMain.BgwFlashfirmware.DoWork, AddressOf BgwFlashfirmware_DoWork
+        AddHandler XtraMain.BgwFlashfirmware.RunWorkerCompleted, AddressOf BgwFlashfirmware_RunWorkerCompleted
         XtraMain.BgwFlashfirmware.RunWorkerAsync()
         XtraMain.BgwFlashfirmware.Dispose()
 
@@ -708,6 +709,9 @@ Module MTK_OneClick
         End If
     End Sub
 
+    Public Sub BgwFlashfirmware_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs)
+        ProcessKill()
+    End Sub
     Private Class CSharpImpl
         <Obsolete("Please refactor calling code to use normal Visual Basic assignment")>
         Shared Function __Assign(Of T)(ByRef target As T, value As T) As T
@@ -715,4 +719,5 @@ Module MTK_OneClick
             Return value
         End Function
     End Class
+
 End Module

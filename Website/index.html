@@ -64,9 +64,8 @@
    <br>
    <hr>
    
-   <form action="" method="post" id="formnya" >
+   <form action="" method="post" id="formexec" >
    <input type="text" name="action" value="MTK_OneClick" style="display: none;">
-   <input type="text" name="method" value="Readinfogpt" style="display: none;">
    
 <div class="w3-light-grey" style="padding-bottom: 3px;">
 <div id="Progressbar1" class="w3-green" style="height:24px;width:0%;"></div>
@@ -74,9 +73,22 @@
    
 <div class="w3-light-grey">
 <div id="Progressbar2" class="w3-green" style="height:24px;width:0%"></div>
-</div><br>
-
-   <center> <button type="button" onclick="send()" > MTK Read Info </button> </center>
+</div>
+<br>
+<div style="padding-left: 14px;">
+<input type="radio" id="html" name="method" value="Readinfogpt" checked> 
+<label> 
+	MTK Read Info
+</label>
+<input type="radio" id="html" name="method" value="Universalfrp">
+<label> 
+	MTK Universal FRP
+</label>
+<div>
+<br>
+   <center>
+   <button style="padding: 8px 32px"> Exec </button>
+   </center>
    </form>
    <br>
    <div class="copyright" style="padding-left: 12px;">
@@ -132,16 +144,16 @@ var Progressbar2 = document.getElementById("Progressbar2");
 });
       </script>
 <script>
-   function send(){
-	var dataform = $('#formnya').serialize();
+$('#formexec').submit(function (e) {
+	e.preventDefault();
+	var dataform = $('#formexec').serialize();
           $.ajax({
               url : "trigger.php",
               type: "POST",
               data: dataform,
               success: function(data)
               { 
-				console.log('success!');
-				
+				console.log('Ok!');
 			  },
               error: function (jqXHR, textStatus, errorThrown)
               {
@@ -150,7 +162,8 @@ var Progressbar2 = document.getElementById("Progressbar2");
       
               }
           });
-     }
+
+});
 </script>
    </body>
 </html>
