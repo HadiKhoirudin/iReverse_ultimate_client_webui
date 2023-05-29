@@ -2,6 +2,8 @@
          body {
          font-family: Consolas !important;
 		 font-size: 10pt !important;
+		 margin: 0 !important;
+		 line-height: 1 !important;
          }
 		 #logContainer {
          font-family: Consolas;
@@ -25,6 +27,9 @@
          }
          .black {
          color: black;
+         }
+         .purple {
+         color: #800080;
          }
          .blue {
          color: blue;

@@ -56,7 +56,7 @@ Public Class TimeSpanElapsed
         RichLogs(Date.Now.ToString("ddd, dd MMM yyyy HH:mm:ss"), "black", True, True)
         Dim str = String.Format("{0:00m}: {1:00s}", elapsed.Minutes, elapsed.Seconds)
         RichLogs(" Elapsed Time : " & str, "darkorange", True, True)
-
+        RichLogs(" ", "red", False, True)
     End Sub
 
     Public Shared Sub ElapsedPending(Watch As Stopwatch)
@@ -68,11 +68,11 @@ Public Class TimeSpanElapsed
         RichLogs(Date.Now.ToString("ddd, dd MMM yyyy HH:mm:ss"), "black", True, True)
         Dim str = String.Format("{0:00m}: {1:00s}", elapsed.Minutes, elapsed.Seconds)
         RichLogs(" Elapsed Time : " & str, "darkorange", True, True)
-
+        RichLogs(" ", "red", False, True)
     End Sub
 End Class
 Public Class WaitingStart
-    Public Shared Sub WaitingDevices(TextBox As RichTextBox)
+    Public Shared Sub WaitingDevices()
         RichLogs(">clear<", "black")
         RichLogs(" Turn Off Phone, Hold ", "black", True)
         RichLogs("VOL", "chartreuse", True)
@@ -82,9 +82,10 @@ Public Class WaitingStart
         RichLogs(" Phone must have battery inside!", "darkorange", True, True)
         RichLogs(" Waiting For Device", "black", True)
         RichLogs(" 20s ... ", "black", True)
+        RichLogs(" ", "red", False, True)
     End Sub
 
-    Public Shared Sub WaitingUniversaDevices(TextBox As RichTextBox)
+    Public Shared Sub WaitingUniversaDevices()
         RichLogs(">clear<", "black")
         RichLogs(" Turn Off Phone, Hold ", "black", True)
         RichLogs("VOL", "chartreuse", True)
@@ -94,5 +95,6 @@ Public Class WaitingStart
         RichLogs(" Phone must have battery inside!", "darkorange", True, True)
         RichLogs(" Waiting For Device", "black", True)
         RichLogs(" ... ", "black", True, True)
+        RichLogs(" ", "red", False, True)
     End Sub
 End Class

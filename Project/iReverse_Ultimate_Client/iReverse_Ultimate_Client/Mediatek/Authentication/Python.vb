@@ -168,7 +168,7 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("WDT") Then
                                                                            RichLogs(" WDT: ", "black", True)
-                                                                           RichLogs(text.Substring(text.IndexOf(":") + 2), "cyan", False, False)
+                                                                           RichLogs(text.Substring(text.IndexOf(":") + 2), "purple", False, False)
                                                                        End If
 
                                                                        If text.Contains("Uart:") Then
@@ -188,7 +188,7 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("CQ_DMA") Then
                                                                            RichLogs(" CQDMA Addr: ", "black", True)
-                                                                           RichLogs(text.Substring(text.IndexOf(":") + 2), "cyan", False, False)
+                                                                           RichLogs(text.Substring(text.IndexOf(":") + 2), "purple", False, False)
                                                                        End If
 
                                                                        If text.Contains("Var1") Then
@@ -266,7 +266,7 @@ Namespace Mediatek.Authentication
                                                                        End If
 
                                                                        If text.Contains("Successfully uploaded stage 2") Then
-                                                                           RichLogs("succes ✓✓", "cyan", False, True)
+                                                                           RichLogs("succes ✓✓", "purple", False, True)
                                                                        End If
 
                                                                        If text.Contains("Error on sending data") Then
@@ -294,7 +294,7 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("EMMC RPMB") Then
                                                                            RichLogs(" RPMB : ", "black", True)
-                                                                           RichLogs(GetFileCalc(ParseHexString(text.Substring(text.IndexOf(":") + 2)) / 1024.0), "cyan", False, True)
+                                                                           RichLogs(GetFileCalc(ParseHexString(text.Substring(text.IndexOf(":") + 2)) / 1024.0), "purple", False, True)
                                                                        End If
 
                                                                        If text.Contains("EMMC USER") Then
@@ -387,7 +387,7 @@ Namespace Mediatek.Authentication
                                                                        End If
 
                                                                        If text.Contains("Connected to preloader step2") Then
-                                                                           RichLogs("success ✓✓", "cyan", False, True)
+                                                                           RichLogs("success ✓✓", "purple", False, True)
                                                                        End If
                                                                    End If
 
@@ -410,7 +410,7 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("m_emmc_rpmb_size =") Then
                                                                            RichLogs(" RPMB : ", "black", True)
-                                                                           RichLogs(GetFileCalc(ParseHexString(text.Substring(text.IndexOf("=") + 2)) / 1024.0), "cyan", False, True)
+                                                                           RichLogs(GetFileCalc(ParseHexString(text.Substring(text.IndexOf("=") + 2)) / 1024.0), "purple", False, True)
                                                                        End If
 
                                                                        If text.Contains("m_emmc_ua_size =") Then
@@ -1224,6 +1224,7 @@ Namespace Mediatek.Authentication
                                                               If text <> String.Empty Then
 
                                                                   If e.Data.Contains("struct.error:") Then
+                                                                      RichLogs(" ", "red", False, True)
                                                                       RichLogs(Environment.NewLine & vbLf & " | USB Connection Failed ...! | ", "red", False, True)
                                                                       ee.Cancel = True
                                                                   End If

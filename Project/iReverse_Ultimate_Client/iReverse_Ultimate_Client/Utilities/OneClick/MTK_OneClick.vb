@@ -15,7 +15,7 @@ Module MTK_OneClick
     Public SearchTime As String
     Public EndTime As String
 
-    Public WorkerMethod As String = "UNIFERSAL"
+    Public WorkerMethod As String = "UNIVERSAL"
     Public Sub MTKOneclick(Method As String)
 
         Mediatek.Mediatek_tool.FlashOption.Method = Method
@@ -30,8 +30,10 @@ Module MTK_OneClick
 
     End Sub
     Public Sub BgwFlashfirmware_DoWork(sender As Object, e As DoWorkEventArgs)
-        If WorkerMethod = "UNIFERSAL" Then
-
+        If WorkerMethod = "UNIVERSAL" Then
+            Watch.[Start]()
+            Watch.Restart()
+            WaitingStart.WaitingUniversaDevices()
             If Mediatek.Mediatek_tool.FlashOption.Method = "Readgpttable" Then
 
                 ''If XtraMain.DelegateFunction.CheckboxEMI.Checked Then
@@ -710,6 +712,7 @@ Module MTK_OneClick
     End Sub
 
     Public Sub BgwFlashfirmware_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs)
+        Watch.[Stop]()
         ProcessKill()
     End Sub
     Private Class CSharpImpl

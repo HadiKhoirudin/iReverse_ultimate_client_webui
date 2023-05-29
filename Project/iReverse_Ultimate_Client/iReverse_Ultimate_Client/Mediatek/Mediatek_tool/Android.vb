@@ -208,67 +208,67 @@ Namespace Mediatek.Mediatek_tool
 
                                                                        If array <> "" Then
                                                                            RichLogs(" Platform" & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array.ToUpper(), "cyan", True, True)
+                                                                           RichLogs(array.ToUpper(), "purple", True, True)
                                                                        End If
 
                                                                        If array1 <> "" Then
                                                                            RichLogs(" Cpu abi" & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array1, "cyan", True, True)
+                                                                           RichLogs(array1, "purple", True, True)
                                                                        End If
 
                                                                        If array2 <> "" Then
                                                                            RichLogs(" Manufacturer" & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array2, "cyan", True, True)
+                                                                           RichLogs(array2, "purple", True, True)
                                                                        End If
 
                                                                        If array3 <> "" Then
                                                                            RichLogs(" Board" & vbTab & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array3, "cyan", True, True)
+                                                                           RichLogs(array3, "purple", True, True)
                                                                        End If
 
                                                                        If array4 <> "" Then
                                                                            RichLogs(" Name" & vbTab & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array4, "cyan", True, True)
+                                                                           RichLogs(array4, "purple", True, True)
                                                                        End If
 
                                                                        If array5 <> "" Then
                                                                            RichLogs(" Brand" & vbTab & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array5, "cyan", True, True)
+                                                                           RichLogs(array5, "purple", True, True)
                                                                        End If
 
                                                                        If array6 <> "" Then
                                                                            RichLogs(" Model" & vbTab & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array6, "cyan", True, True)
+                                                                           RichLogs(array6, "purple", True, True)
                                                                        End If
 
                                                                        If array7 <> "" Then
                                                                            RichLogs(" Build id" & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array7, "cyan", True, True)
+                                                                           RichLogs(array7, "purple", True, True)
                                                                        End If
 
                                                                        If array8 <> "" Then
                                                                            RichLogs(" Version" & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array8, "cyan", True, True)
+                                                                           RichLogs(array8, "purple", True, True)
                                                                        End If
 
                                                                        If array9 <> "" Then
                                                                            RichLogs(" Build number" & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array9, "cyan", True, True)
+                                                                           RichLogs(array9, "purple", True, True)
                                                                        End If
 
                                                                        If array10 <> "" Then
                                                                            RichLogs(" Build date" & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array10, "cyan", True, True)
+                                                                           RichLogs(array10, "purple", True, True)
                                                                        End If
 
                                                                        If array11 <> "" Then
                                                                            RichLogs(" Security Patch" & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array11, "cyan", True, True)
+                                                                           RichLogs(array11, "purple", True, True)
                                                                        End If
 
                                                                        If array12 <> "" Then
                                                                            RichLogs(" Description" & vbTab & ": ", "black", True, False)
-                                                                           RichLogs(array12, "cyan", True, True)
+                                                                           RichLogs(array12, "purple", True, True)
                                                                        End If
                                                                    End Using
                                                                End If
