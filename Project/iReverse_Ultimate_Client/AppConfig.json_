@@ -1,0 +1,8 @@
+﻿{
+  "AppId": "1604614",
+  "AppKey": "743996c65a2c3b504344",
+  "AppSecret": "9317a9ca542aef9b4343",
+  "Cluster": "ap1",
+  "Encrypted": false,
+  "EnableAuthorizationLatency": true
+}

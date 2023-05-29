@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>iReverse WebUI</title>
+      <meta name="viewport" content="width=device-width">
+	  <link rel="icon" type="image/x-icon" href="favicon.png">
+	  <link rel="stylesheet" href="w3.css">
+      <script src="pusher.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <style>
+         #logContainer {
+         font-family: Consolas;
+         }
+         .cyan {
+         color: #00FFFF;
+         }
+         .red {
+         color: red;
+         }
+         .green {
+         color: green;
+         }
+         .fuchsia  {
+         color: #FF00FF;
+         }
+         .chartreuse  {
+         color: #DFFF00;
+         }
+         .black {
+         color: black;
+         }
+         .blue {
+         color: blue;
+         }
+         .lime {
+         color:#00FF00;
+         }
+         .gold {
+         color:#FFD700;
+         }
+         .gold {
+         color:#FFD700;
+         }
+         .orange {
+         color:#FFA500;
+         }
+         .darkorange {
+         color:#FF8C00 ;
+         }
+      </style>
+   </head>
+   <body>
+
+   <center>
+      <h1>iReverse Ultimate WebUI</h1>
+   </center>
+   <p style="text-align:center;">
+      <marquee>Ini adalah WebUI untuk melakukan Flashing / Unlock Smartphone oleh Hadi Khoirudin, S.Kom...     </marquee>
+   </p>
+   
+   <hr>
+   <br>
+      <div id="logContainer" style="padding-left: 14px; font-size: 12pt;"></div>
+   <br>
+   <hr>
+   
+   <form action="" method="post" id="formnya" >
+   <input type="text" name="action" value="MTK_OneClick" style="display: none;">
+   <input type="text" name="method" value="Readinfogpt" style="display: none;">
+   
+<div class="w3-light-grey">
+<div id="Progressbar1" class="w3-green" style="padding-bottom:3px;height:24px;width:0%;"></div>
+</div>
+   
+<div class="w3-light-grey">
+<div id="Progressbar2" class="w3-green" style="height:24px;width:0%"></div>
+</div><br>
+
+   <center> <button type="button" onclick="send()" > MTK Read Info </button> </center>
+   </form>
+   <br>
+   <div class="copyright" style="padding-left: 12px;">
+   <small>
+		2023 made with &#x1f49d; by 
+		<a href="https://www.youtube.com/c/hadikit?sub_confirmation=1" target="_blank">Hadi Khoirudin, S.Kom - @HadiKIT</a> for a better web.
+	</small>
+   </div>
+      <script>
+var channel_me = 'private-channel-ireverse';
+var	event_me = 'client-User-Web';
+var	event_to = 'client-ireverse-001';
+
+var app_key = '743996c65a2c3b504344';
+var pusher = new Pusher(app_key, {
+	cluster: 'ap1',
+	forceTLS: false
+});
+
+channel = pusher.subscribe(channel_me);
+channel.bind(event_me, function (data) {
+
+console.log(data);
+var logContainer = document.getElementById("logContainer");
+var Progressbar1 = document.getElementById("Progressbar1");
+var Progressbar2 = document.getElementById("Progressbar2");
+  if (data.hasOwnProperty('message'))
+  {
+	  if (data.hasOwnProperty('message') && data.message === ">clear<") {
+		 logContainer.innerHTML = ""; // Mengosongkan logContainer jika clear:true
+	  } else {
+			 var logText = data.hasOwnProperty('message') ? data.message : '';
+			 var logClass = data.hasOwnProperty('color') ? data.color : '';
+			 if (data.hasOwnProperty('newline') && data.newline) {
+				logContainer.innerHTML += '<span class="' + logClass + '">' + logText + '</span> <br>';
+			 } else {
+				logContainer.innerHTML += '<span class="' + logClass + '">' + logText + '</span>';
+			 }
+		 }
+	 }
+	 
+	 
+  if (data.hasOwnProperty('progressbar1'))
+  {
+	Progressbar1.style.width = data.progressbar1 + '%';
+  }
+  
+  if (data.hasOwnProperty('progressbar2'))
+  {
+	Progressbar2.style.width = data.progressbar2 + '%';
+  }
+  
+});
+      </script>
+<script>
+   function send(){
+	var dataform = $('#formnya').serialize();
+          $.ajax({
+              url : "trigger.php",
+              type: "POST",
+              data: dataform,
+              success: function(data)
+              { 
+				console.log('success!');
+				
+			  },
+              error: function (jqXHR, textStatus, errorThrown)
+              {
+				  
+                  alert("Mohon maaf! Sepertinya ada masalah dengan server!");
+      
+              }
+          });
+     }
+</script>
+   </body>
+</html>

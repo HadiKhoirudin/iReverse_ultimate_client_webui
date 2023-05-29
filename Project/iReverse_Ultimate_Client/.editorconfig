@@ -1,0 +1,7 @@
+﻿[*.vb]
+
+# BC40000: Type or member is obsolete
+dotnet_diagnostic.BC40000.severity = none
+
+# BC42030: Variable is passed by reference before it has been assigned a value
+dotnet_diagnostic.BC42030.severity = none
