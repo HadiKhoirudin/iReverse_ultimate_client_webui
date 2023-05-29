@@ -1,7 +1,7 @@
 # iReverse_ultimate_client_webui
 This is VB Project For simple sample
 
-Using pusher to control WinForm / Tools for Unlock / Flashing ANdroid Mobile from Web UI.
+Using pusher to control WinForm / Tools for Unlock / Flashing Android Mobile from Web UI.
 
 Let's make something awesome.
 
