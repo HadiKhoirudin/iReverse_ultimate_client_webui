@@ -62,6 +62,7 @@
 		padding: 2px 48px;
 		font-size: 12px;
 		width: auto !important;
+		margin-left: -38px !important;
 		}
 		.custom.hidden {
 		display: none;
