@@ -10,14 +10,18 @@ Imports System.Windows.Forms
 Imports DevExpress.XtraEditors
 Imports Microsoft.VisualBasic
 Imports iReverse_Ultimate_Client.DXApplication.Mtkxml
-Module MTK_OneClick
+Module MtkFlash
     Public Firmware As List(Of Firmware) = New List(Of Firmware)()
     Public SearchTime As String
     Public EndTime As String
+    Public TxtFlashDA As String
+    Public CheckboxEMI As Boolean = False
 
     Public WorkerMethod As String = "UNIVERSAL"
-    Public Sub MTKOneclick(Method As String)
-
+    Public Sub MtkFlashExec(Method As String, WkMethod As String)
+        MtkFlash_Load()
+        EndTime = 3.ToString() & 0.ToString()
+        WorkerMethod = WkMethod
         Mediatek.Mediatek_tool.FlashOption.Method = Method
         Watch = New Stopwatch()
         XtraMain.BgwFlashfirmware = New BackgroundWorker With {
@@ -29,6 +33,22 @@ Module MTK_OneClick
         XtraMain.BgwFlashfirmware.Dispose()
 
     End Sub
+    Public Sub MtkFlash_Load()
+        Console.WriteLine(Mediatek.Mediatek_tool.Flashpath.Flashtoolexe)
+        Mediatek.Mediatek_tool.Mediatek.Connection = "BromUSB"
+        If Directory.Exists(Path.GetDirectoryName(Mediatek.Mediatek_tool.Flashpath.Download_DA)) Then
+            Dim directory As DirectoryInfo = New DirectoryInfo(Mediatek.Mediatek_tool.Flashpath.Download_DA)
+
+            For Each file As FileInfo In directory.EnumerateFiles()
+
+                If file.Name.Contains("MTK_AllInOne_DA.bin") Then
+                    Mediatek.Mediatek_tool.Mediatek.DA = file.FullName
+                    TxtFlashDA = file.Name
+                End If
+            Next
+        End If
+
+    End Sub
     Public Sub BgwFlashfirmware_DoWork(sender As Object, e As DoWorkEventArgs)
         If WorkerMethod = "UNIVERSAL" Then
             Watch.[Start]()
@@ -36,7 +56,7 @@ Module MTK_OneClick
             WaitingStart.WaitingUniversaDevices()
             If Mediatek.Mediatek_tool.FlashOption.Method = "Readgpttable" Then
 
-                ''If XtraMain.DelegateFunction.CheckboxEMI.Checked Then
+                ''If CheckboxEMI Then
                 ''Mediatek.Authentication.Python.Command(String.Concat(New String() {"printgpt", " ", "--preloader=", Mediatek.Mediatek_tool.Mediatek.PreloaderEmi}),XtraMain.DelegateFunction.BgwFlashfirmware, e)
                 ''Else
                 Mediatek.Authentication.Python.Command("printgpt", XtraMain.DelegateFunction.BgwFlashfirmware, e)
@@ -183,7 +203,7 @@ Module MTK_OneClick
                 End If
 
                 ''If XtraMain.DelegateFunction.CheckboxEMI.Checked Then
-                Mediatek.Authentication.Python.Command(String.Concat(New String() {"r", " ", Mediatek.Mediatek_tool.FlashOption.Textpartition.Remove(Mediatek.Mediatek_tool.FlashOption.Textpartition.Length - 1), " ", text3.Remove(text3.Length - 1), " ", "--preloader=", Mediatek.Mediatek_tool.Mediatek.PreloaderEmi}), XtraMain.DelegateFunction.BgwFlashfirmware, e)
+                ''Mediatek.Authentication.Python.Command(String.Concat(New String() {"r", " ", Mediatek.Mediatek_tool.FlashOption.Textpartition.Remove(Mediatek.Mediatek_tool.FlashOption.Textpartition.Length - 1), " ", text3.Remove(text3.Length - 1), " ", "--preloader=", Mediatek.Mediatek_tool.Mediatek.PreloaderEmi}), XtraMain.DelegateFunction.BgwFlashfirmware, e)
                 ''Else
                 Mediatek.Authentication.Python.Command(String.Concat(New String() {"r", " ", Mediatek.Mediatek_tool.FlashOption.Textpartition.Remove(Mediatek.Mediatek_tool.FlashOption.Textpartition.Length - 1), " ", text3.Remove(text3.Length - 1)}), XtraMain.DelegateFunction.BgwFlashfirmware, e)
                 ''End If
@@ -712,6 +732,13 @@ Module MTK_OneClick
     End Sub
 
     Public Sub BgwFlashfirmware_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs)
+        Mediatek.Mediatek_tool.FlashOption.Method = String.Empty
+        Mediatek.Mediatek_tool.Flashcommand.Config(Mediatek.Mediatek_tool.Flashcommand.Formatdisable)
+        Delay(0.1)
+        Progressbar1(100)
+        Delay(0.1)
+        Progressbar2(100)
+        Mediatek.Mediatek_list.Listport.MtkComport = String.Empty
         Watch.[Stop]()
         ProcessKill()
     End Sub

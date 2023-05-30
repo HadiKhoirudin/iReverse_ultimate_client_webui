@@ -44,6 +44,22 @@ Module WebUI
         Dim channel As Channel = _pusher.GetChannel(XtraMain.mychannel)
         channel.Trigger(XtraMain.toEvent, jsonData)
     End Sub
+    Public Sub QlMGPTGrid(Checked As Boolean, Partition As String, Offset As String, Length As String, Custom As String, Flags As String, UUID As String)
+
+        Dim jsonData = New With {
+        .QlMGPTGrid = ">clear<",
+        .checked = Checked,
+        .partition = Partition,
+        .offset = Offset,
+        .length = Length,
+        .custom = Custom,
+        .flags = Flags,
+        .UUID = UUID
+        }
+
+        Dim channel As Channel = _pusher.GetChannel(XtraMain.mychannel)
+        channel.Trigger(XtraMain.toEvent, jsonData)
+    End Sub
 End Module
 
 Public Class TimeSpanElapsed
@@ -57,6 +73,7 @@ Public Class TimeSpanElapsed
         Dim str = String.Format("{0:00m}: {1:00s}", elapsed.Minutes, elapsed.Seconds)
         RichLogs(" Elapsed Time : " & str, "darkorange", True, True)
         RichLogs(" ", "red", False, True)
+        lboperation("Done")
     End Sub
 
     Public Shared Sub ElapsedPending(Watch As Stopwatch)
@@ -69,6 +86,7 @@ Public Class TimeSpanElapsed
         Dim str = String.Format("{0:00m}: {1:00s}", elapsed.Minutes, elapsed.Seconds)
         RichLogs(" Elapsed Time : " & str, "darkorange", True, True)
         RichLogs(" ", "red", False, True)
+        lboperation("Canceled")
     End Sub
 End Class
 Public Class WaitingStart

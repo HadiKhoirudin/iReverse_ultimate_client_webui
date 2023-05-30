@@ -205,6 +205,7 @@
     <Compile Include="Mediatek\Mediatek_tool\MediatekInt.vb" />
     <Compile Include="Mediatek\Mediatek_tool\Mtkxml.vb" />
     <Compile Include="Mediatek\Metamode\Meta.vb" />
+    <Compile Include="Mediatek\MtkFlash.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -222,7 +223,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Utilities\KillCommand\KillCommand.vb" />
-    <Compile Include="Utilities\OneClick\MTK_OneClick.vb" />
+    <Compile Include="Utilities\MainUI\MainUI.vb" />
     <Compile Include="Utilities\Pusher\PusherModule.vb" />
     <Compile Include="Utilities\WebUI\WebUI.vb" />
     <Compile Include="XtraMain.Designer.vb">

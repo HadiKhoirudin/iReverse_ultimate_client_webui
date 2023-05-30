@@ -42,23 +42,13 @@ Public Module PusherModule
         Dim json As String = eventData.Data
         Dim jsonObject As JObject = JObject.Parse(json)
 
-        If (jsonObject("action") = ("MTK_OneClick")) Then
-            If XtraMain.DelegateFunction.lboperation.InvokeRequired Then
-                XtraMain.DelegateFunction.lboperation.Invoke(Sub() XtraMain.DelegateFunction.lboperation.Text = jsonObject("method"))
-            Else
-                XtraMain.DelegateFunction.lboperation.Text = jsonObject("method")
-            End If
-            MTKOneclick(jsonObject("method"))
-            If XtraMain.DelegateFunction.lboperation.InvokeRequired Then
-                XtraMain.DelegateFunction.lboperation.Invoke(Sub() XtraMain.DelegateFunction.lboperation.Text = "Done")
-            Else
-                XtraMain.DelegateFunction.lboperation.Text = "Done"
-            End If
+        If (jsonObject("action") = ("MtkFlash")) Then
+            lboperation(jsonObject("method"))
+            MtkFlashExec(jsonObject("method"), jsonObject("WorkerMethod"))
         End If
     End Sub
-
     Public Sub Connected(ByVal sender As Object)
-        XtraMain.DelegateFunction.lbstatserver.Invoke(Sub() XtraMain.DelegateFunction.lbstatserver.Text = "Connected")
+        lbstatserver("Connected")
     End Sub
 
     Public Sub Subscribed(ByVal sender As Object, ByVal channel As Channel)

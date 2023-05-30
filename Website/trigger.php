@@ -25,7 +25,7 @@
 
   $pusher = new Pusher\Pusher($app_key, $app_secret, $app_id, $app_cluster);
 
-  $data =   ['action'		=> $_POST['action'], 'method'		=> $_POST['method']];
+  $data =   ['action'		=> $_POST['action'], 'method'		=> $_POST['method'], 'WorkerMethod'		=> $_POST['workermethod']];
 			
   $channel					= 'private-channel-ireverse';
   $event_to					= 'client-ireverse-001';

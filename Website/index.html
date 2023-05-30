@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width">
         <link rel="icon" type="image/x-icon" href="assets/icons/favicon.png">
         <link rel="stylesheet" href="assets/css/custom.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.6.2/css/select.dataTables.min.css">
+        <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.6.2/css/select.dataTables.min.css">-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </head>
     <body>
@@ -42,59 +42,42 @@
                 <div class="col-6">
                     <hr>
                     Datagrid : 
-					
-<table class="table table-sm" id="QlMGPTGrid">
-        <thead>
-            <tr>
-                <th style="text-align: center"><input type="checkbox" id="select_all" /></th>
-                <th scope="col">Partitions</th>
-                <th scope="col">Offsets</th>
-                <th scope="col">Lengths</th>
-                <th scope="col">Customs</th>
-                <th scope="col">Flags</th>
-                <th scope="col">UUIDs</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="checkbox" name="cbpartition"/></td>
-                <td>boot</td>
-                <td>0x58764546</td>
-                <td>0x967576</td>
-                <td>Double click...</td>
-                <td>boot</td>
-                <td>098-7986-687587-564647640-798796</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="cbpartition"/></td>
-                <td>boot_para</td>
-                <td>0x58764546</td>
-                <td>0x967576</td>
-                <td>Double click...</td>
-                <td>boot</td>
-                <td>098-7986-687587-564647640-798796</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="cbpartition"/></td>
-                <td>cache</td>
-                <td>0x58764546</td>
-                <td>0x967576</td>
-                <td>Double click...</td>
-                <td>boot</td>
-                <td>098-7986-687587-564647640-798796</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="cbpartition"/></td>
-                <td>cust</td>
-                <td>0x58764546</td>
-                <td>0x967576</td>
-                <td>Double click...</td>
-                <td>boot</td>
-                <td>098-7986-687587-564647640-798796</td>
-            </tr>
-        </tbody>
-    </table>
-	</div>
+					<div class="overflow-auto" style="width: 658px; height: 328px;">
+						<table class="table table-sm" id="DataView" style="display: none;">
+							<thead>
+								<tr>
+									<th style="text-align: center"><input type="checkbox" id="select_all" /></th>
+									<th scope="col">Partitions</th>
+									<th scope="col">Files</th>
+									<th scope="col">Customs</th>
+									<th scope="col">Start</th>
+									<th scope="col">Sizes</th>
+									<th scope="col">Index</th>
+									<th scope="col">Locations</th>
+								</tr>
+							</thead>
+							<tbody id="DataViewtbody"></tbody>
+						</table>
+						 
+							
+						<table class="table table-sm" id="QlMGPTGrid" style="font-size:11px !important;">
+							<thead>
+								<tr>
+									<th style="text-align: center"><input type="checkbox" id="select_all" /></th>
+									<th scope="col">Partitions</th>
+									<th scope="col">Offsets</th>
+									<th scope="col">Lengths</th>
+									<th scope="col">Customs</th>
+									<th scope="col">Flags</th>
+									<th scope="col">UUIDs</th>
+								</tr>
+							</thead>
+							<tbody id="QlMGPTGridtbody"></tbody>
+						</table>
+						
+					</div>
+                <hr>
+                </div>
                 <div class="col-1">
                     <hr>
                     Menu : 
@@ -111,7 +94,8 @@
                 </div>
                 <div class="col-6">
                     <form action="" method="post" id="formexec" >
-                        <input class="custom hidden" type="text" name="action" value="MTK_OneClick">
+                        <input class="custom hidden" type="text" name="action" value="MtkFlash">
+                        <input class="custom hidden" type="text" name="workermethod" value="UNIVERSAL">
                         <br>
                         <div class="custom exec">
                             <div class="form-check form-check-inline">
@@ -136,51 +120,19 @@
                 </div>
             </div>
         </div>
-        <br>
-        <div class="copyright text-center">
-            <small>
-            &copy 2023 - made with &#x1f49d; by 
-            <a href="https://www.youtube.com/@HadiK-IT?sub_confirmation=1" target="_blank">Hadi Khoirudin, S.Kom - @HadiKIT</a> for a better web.
-            </small>
-        </div>
+	<footer class="content-footer footer bg-footer-theme">
+		<div class="container-xxl">
+			<div class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+				&copy 2023 - made with &#x1f49d;
+				<a href="https://www.youtube.com/@HadiK-IT?sub_confirmation=1" style="color: black; text-decoration: none;" target="_blank"> by Hadi Khoirudin, S.Kom - @HadiKIT</a> for a better web.
+			</div>
+		</div>
+    </footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+    <!--<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>   
     <script src="assets/js/pusher.min.js"></script>
     <script src="assets/js/main.js"></script>
-	
-						
-<script>	
-$(document).ready(function(){
-$('#QlMGPTGrid').on('click', '#select_all', function () {
-	var elms = document.getElementsByName('cbpartition');
-	if ($('#select_all:checked').val() === 'on')
-	{
-	for (var i = 0; i < elms.length; i++) { elms[i].setAttribute("checked", ""); }
-	} else {
-	for (var i = 0; i < elms.length; i++) { elms[i].removeAttribute("checked"); }
-	}
-});
-$(function() {
-  const $headers = $("#QlMGPTGrid thead tr th"); 
-  $("#btnGet").on("click", function() {
-    const data = [];
-    $("#QlMGPTGrid tbody input[type=checkbox]:checked").each(function(index) {
-      $row = $(this).closest("tr");
-      $cells = $row.find("td"); // or use some selector to ignore the first cell
-      data[index] = {};
-      $cells.each(function(cellIndex) {
-        if (cellIndex>0) data[index][$headers.eq(cellIndex).html()] = $(this).html();
-      });
-    });
-    console.log(JSON.stringify(data));
-  });
-
-});
-
-});
-</script>					
-
 </html>

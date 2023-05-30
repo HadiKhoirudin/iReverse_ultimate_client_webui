@@ -433,8 +433,8 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("Dumping partition") Then
                                                                            RichLogs(" Reading Device info ... ", "black", False, False)
-                                                                           Progressbar2(0)
                                                                            For i As Integer = 1 To 10
+                                                                               Delay(0.1)
                                                                                Progressbar2(i + 90)
                                                                            Next
                                                                            Return
@@ -443,6 +443,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                            Mediatek_tool.FlashOption.progres = Integer.Parse(array2(0))
                                                                        End If
@@ -463,6 +464,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Done") Then
 
                                                                            For i As Integer = 1 To 10
+                                                                               Delay(0.1)
                                                                                Progressbar2(i + 90)
                                                                            Next
 
@@ -471,6 +473,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                        End If
 
@@ -506,6 +509,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Done") Then
 
                                                                            For i As Integer = 1 To 10
+                                                                               Delay(0.1)
                                                                                Progressbar2(i + 90)
                                                                            Next
                                                                        End If
@@ -513,6 +517,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                        End If
 
@@ -540,7 +545,8 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("done") Then
                                                                            For i As Integer = 1 To 10
-                                                                               Progressbar2(i + 90)
+                                                                               Delay(0.1)
+                                                                               Progressbar1(i + 90)
                                                                            Next
                                                                        End If
 
@@ -556,6 +562,7 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("Format done") Then
                                                                            For i As Integer = 1 To 10
+                                                                               Delay(0.1)
                                                                                Progressbar2(i + 90)
                                                                            Next
                                                                            RichLogs(Environment.NewLine & " Formatted data ... ", "black", True)
@@ -582,7 +589,8 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("done") Then
                                                                            For i As Integer = 1 To 10
-                                                                               Progressbar2(i + 90)
+                                                                               Delay(0.1)
+                                                                               Progressbar1(i + 90)
                                                                            Next
                                                                        End If
 
@@ -598,7 +606,8 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("Format done") Then
                                                                            For i As Integer = 1 To 10
-                                                                               Progressbar1(i + 90)
+                                                                               Delay(0.1)
+                                                                               Progressbar2(i + 90)
                                                                            Next
                                                                            RichLogs(Environment.NewLine & " Errasing FRP protection ... ", "black", True)
                                                                            RichLogs("done ✓", "lime", True, True)
@@ -624,7 +633,8 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("done") Then
                                                                            For i As Integer = 1 To 10
-                                                                               Progressbar2(i + 90)
+                                                                               Delay(0.1)
+                                                                               Progressbar1(i + 90)
                                                                            Next
                                                                        End If
 
@@ -640,7 +650,8 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("Format done") Then
                                                                            For i As Integer = 1 To 10
-                                                                               Progressbar1(i + 90)
+                                                                               Delay(0.1)
+                                                                               Progressbar2(i + 90)
                                                                            Next
                                                                            RichLogs(Environment.NewLine & " Erase Mi Account ... ", "black", True)
                                                                            RichLogs("done ✓", "lime", True, True)
@@ -686,9 +697,8 @@ Namespace Mediatek.Authentication
                                                                            If DataTable.Rows.Count > 0 Then
 
                                                                                For i As Integer = 0 To DataTable.Rows.Count - 1
-                                                                                   ''MtkFlash.SharedUI.QlMGPTGrid.Invoke(Sub()
-                                                                                   ''MtkFlash.SharedUI.QlMGPTGrid.Rows.Add(False, DataTable.Rows(i)("Partition").ToString(), DataTable.Rows(i)("Offset").ToString(), DataTable.Rows(i)("Length").ToString(), "double click ...", DataTable.Rows(i)("Flags").ToString(), DataTable.Rows(i)("UUID").ToString())
-                                                                                   ''End Sub)
+                                                                                   Delay(0.1)
+                                                                                   QlMGPTGrid(False, DataTable.Rows(i)("Partition").ToString(), DataTable.Rows(i)("Offset").ToString(), DataTable.Rows(i)("Length").ToString(), "double click ...", DataTable.Rows(i)("Flags").ToString(), DataTable.Rows(i)("UUID").ToString())
                                                                                Next
                                                                            End If
                                                                        End If
@@ -707,6 +717,7 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("Dumping partition") Then
                                                                            For i As Integer = 1 To 10
+                                                                               Delay(0.1)
                                                                                Progressbar2(i + 90)
                                                                            Next
                                                                            RichLogs(" Reading Device info ... ", "black", False, False)
@@ -716,6 +727,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                            Mediatek_tool.FlashOption.progres = Integer.Parse(array2(0))
                                                                        End If
@@ -772,6 +784,7 @@ Namespace Mediatek.Authentication
 
                                                                        If text.Contains("Done |") Then
                                                                            For i As Integer = 1 To 10
+                                                                               Delay(0.1)
                                                                                Progressbar2(i + 90)
                                                                            Next
                                                                        End If
@@ -779,6 +792,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(array2(0))
                                                                        End If
                                                                    End If
@@ -857,6 +871,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                        End If
                                                                    End If
@@ -894,6 +909,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                        End If
                                                                    End If
@@ -961,6 +977,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                        End If
                                                                    End If
@@ -982,6 +999,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                        End If
 
@@ -1130,6 +1148,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                        End If
 
@@ -1173,6 +1192,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                        End If
 
@@ -1211,6 +1231,7 @@ Namespace Mediatek.Authentication
                                                                        If text.Contains("Progress: |") Then
                                                                            Dim msg As String = text.Remove(0, text.IndexOf("| ")).Replace("| ", "").Replace(".", vbTab)
                                                                            Dim array2 As String() = msg.Split(CType(Nothing, String()), StringSplitOptions.RemoveEmptyEntries)
+                                                                           Delay(0.1)
                                                                            Progressbar1(Integer.Parse(array2(0)))
                                                                        End If
                                                                    End If

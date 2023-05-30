@@ -113,6 +113,7 @@
         Me.Controls.Add(Me.lbstatserver)
         Me.Controls.Add(Me.PictureBox1)
         Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "XtraMain"
         Me.Opacity = 0.98R
         Me.Text = "iReverse Ultimate Client - @HadiK IT"
