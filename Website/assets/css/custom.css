@@ -8,7 +8,7 @@
 		 #logContainer {
          font-family: Consolas;
 		 padding-left: 8px;
-		 font-size: 14px !important;
+		 font-size: 12px !important;
          }
          .cyan {
          color: #00FFFF;
@@ -55,12 +55,24 @@
 		.custom.exec {
 		padding-left: 14px;
 		}
+		.custom.chek.partition  {
+		position: absolute;
+		}
 		.btn.btn-danger.exec {
 		padding: 2px 48px;
+		font-size: 12px;
+		width: auto !important;
 		}
 		.custom.hidden {
 		display: none;
 		}
+		.custom.tb.checkbox {
+		width:5px;
+		}
 		.copyright {
 		padding-left: 12px;
+		}
+		.form-check-input {
+			margin-top: 0 !important;
+			margin-left: -2.2em !important;
 		}

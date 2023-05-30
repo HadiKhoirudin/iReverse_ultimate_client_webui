@@ -46,7 +46,8 @@ var Progressbar2 = document.getElementById("Progressbar2");
   
 });
 
-$('#formexec').submit(function (e) {
+
+$('.btn.btn-danger.exec').click(function(e) {
 	e.preventDefault();
 	var dataform = $('#formexec').serialize();
           $.ajax({
